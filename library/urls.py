@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from api import views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = routers.DefaultRouter()
 
@@ -28,5 +29,6 @@ router.register('editor', views.EditorViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('books/(?P<id>.+)/$', views.justAventureLivros),
     path('admin/', admin.site.urls),
 ]

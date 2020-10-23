@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from rest_framework import viewsets
+from rest_framework import viewsets, generics
 from django.contrib.auth.models import User
 from .models import Book
 from .models import Editor
@@ -26,3 +26,10 @@ class EditorViewSet(viewsets.ModelViewSet):
 class LiteraryGenreViewSet(viewsets.ModelViewSet):
   queryset = LiteraryGenre.objects.all()
   serializer_class = SerializerLiteraryGenre
+
+class justAventureLivros(generics.ListAPIView):
+  serializer_class = SerializerBook
+
+  def get_queryset(self):
+    id = self.kwargs['id']
+    return Book.objects.filter(user=id)
