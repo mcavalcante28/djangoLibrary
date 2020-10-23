@@ -29,7 +29,3 @@ class LiteraryGenreViewSet(viewsets.ModelViewSet):
 
 class justAventureLivros(generics.ListAPIView):
   serializer_class = SerializerBook
-
-  def get_queryset(self):
-    id = self.kwargs['id']
-    return Book.objects.filter(user=id)
