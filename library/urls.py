@@ -17,5 +17,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token/', TokenObtainPairView.as_view()),
     path('api/token/refresh/', TokenRefreshView.as_view()),
-    path('user/books', views.BooksPerGenre.as_view())
+    path('genre/books', views.BooksPerGenre.as_view()),
+    path('books/count', views.BooksInLibrary.as_view()),
+    path('user/books', views.BooksPerUser.as_view())
 ]
